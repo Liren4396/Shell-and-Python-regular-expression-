@@ -1,0 +1,56 @@
+#!/bin/dash
+
+
+
+if [ ! $1 = "" ]
+then
+
+    index_path=index
+    if [ "$1" != "master" ] && [ -e .tigger/branch/$1/index ]
+    then
+        index_path=branch/$1/index
+    fi
+    for file in $(ls | grep -v tigger)
+    do
+
+        
+        if [ ! -e .tigger/$index_path/"$file" ]
+        then
+            rm $file
+        elif [ -e .tigger/$index_path/$file ] && [ -e $file ]
+        then
+            diff_index=$(diff "$file" ".tigger/$index_path/$file")
+            if [ ! "$diff_index" = "" ]
+            then
+                rm $file
+            fi
+        fi
+    done
+    for file in $(ls .tigger/$index_path)
+    do
+        
+        if [ ! -e $file ]
+        then
+            cp .tigger/$index_path/"$file" $file
+        elif [ -e .tigger/$index_path/$file ] && [ -e $file ]
+        then
+            diff_index=$(diff "$file" ".tigger/$index_path/$file")
+            if [ ! "$diff_index" = "" ]
+            then
+                cp .tigger/$index_path/"$file" $file
+            fi
+        fi
+    done
+
+    if [ $1 = "master" ] && [ -e .tigger/repository ]
+    then
+        echo "master" > .tigger/branch_name
+        echo "Switched to branch 'master'"
+    elif [ -e .tigger/branch/$1 ]
+    then
+        echo "branch/$1" > .tigger/branch_name
+        echo "Switched to branch '$1'"
+    else
+        echo "tigger-checkout: error: unknown branch '$1'"
+    fi
+fi

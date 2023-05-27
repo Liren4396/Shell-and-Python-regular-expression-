@@ -1,0 +1,149 @@
+#!/bin/dash
+
+flag=-m
+
+if [ ! -e .tigger ]
+then
+    echo tigger-commit: error: tigger repository directory .tigger not found
+    exit 1 
+fi
+if [ -e .tigger/index ]
+then
+    file_num=$(ls -l .tigger/index | wc -l)
+fi
+file_num=$(($file_num - 1))
+count_file=0
+
+
+
+if [ "$1" = "$flag" ]
+then
+    if [ ! -e .tigger/COMMIT_EDITMSG ]
+    then
+        touch .tigger/COMMIT_EDITMSG
+    fi
+    files_num=$(ls .tigger/index | wc -l)
+
+    if [ "$files_num" -eq 0 ] && [ ! -e .tigger/repository/0 ]
+    then
+        echo "nothing to commit"
+        exit 1
+    fi
+    line=$(wc -l .tigger/COMMIT_EDITMSG | cut -d' ' -f1)
+    if [ -e .tigger/index ]
+    then
+        index_path=index
+        if [ -e .tigger/branch ]
+        then
+            index_path=$(cat .tigger/branch_name)
+            if [ "$index_path" = "master" ]
+            then
+                index_path=index
+            else
+                index_path="$index_path"/index
+            fi
+        fi
+        if [ ! -e .tigger/repository ]
+        then
+            mkdir .tigger/repository
+            echo 'master' > .tigger/branch_name
+        fi
+
+        count=$(($line - 1))
+        flag_index_repo=0
+        flag_index=0
+        name=$2
+        branch=$(cat .tigger/branch_name)
+        if [ "$branch" = "master" ]
+        then
+            branch=repository
+        fi
+        if [ -e .tigger/"$branch"/"$count" ]
+        then
+            num_1=$(ls .tigger/$index_path/ | wc -l)
+            num_2=$(ls .tigger/"$branch"/"$count"/ | wc -l)
+            
+            if [ "$num_1" -eq "$num_2" ]
+            then
+                if [ "$num_1" -eq 0 ]
+                then
+                    flag_index_repo=1
+                    flag_index=1
+
+                fi
+                for file in $(ls .tigger/$index_path)
+                do
+                    for file2 in $(ls .tigger/"$branch"/"$count")
+                    do
+                        line_1=$(wc -l .tigger/$index_path/"$file" | cut -d' ' -f1)
+                        line_2=$(wc -l .tigger/"$branch"/"$count"/"$file2" | cut -d' ' -f1)
+                        diff_index=$(diff ".tigger/$index_path/$file" ".tigger/$branch/$count/$file2")
+                        if [ "$diff_index" = "" ] && [ "$line_1" -eq "$line_2" ] && [ "$file" = "$file2" ]
+                        then
+                            flag_index_repo=$(($flag_index_repo + 1))
+                            break
+                        fi
+                    done
+                    flag_index=$(($flag_index + 1))
+                done
+            fi
+        fi
+        file_null=0
+        if [ "$flag_index_repo" -eq "$flag_index" ] && [ "$flag_index_repo" -ne 0 ]
+        then
+            file_null=$(($file_null + 1))
+        fi
+        commit=$line
+        branch=$(cat .tigger/branch_name)
+        if [ "$branch" = "master" ]
+        then
+            branch=repository
+        fi
+        if [ "$file_null" -eq 0 ]
+        then
+            if [ ! -e .tigger/"$branch"/"$commit" ]
+            then
+                mkdir .tigger/"$branch"/"$commit"
+            fi
+            if [ -e .tigger/COMMIT_EDITMSG ]
+            then
+                sentence="$line $name"
+                if [ "$line" -eq 0 ]
+                then
+                    echo "$sentence" >> ./.tigger/COMMIT_EDITMSG
+                else
+                    sed -i "1i\\$sentence" ./.tigger/COMMIT_EDITMSG
+                fi
+                
+                echo "Committed as commit $line"
+                for file_index in $(ls .tigger/$index_path)
+                do
+                    cp .tigger/$index_path/"$file_index" .tigger/"$branch"/"$commit"
+                done
+                echo ".tigger/"$branch"/"$commit"" > ./.tigger/last_commit
+            else
+                echo 'COMMIT_EDITMSG file'
+            fi
+        else
+            echo 'nothing to commit'
+        fi
+    else
+        echo 'nothing to commit'
+    fi
+else
+    if [ "$1" = -a ] && [ "$2" = -m ]
+    then
+        if [ ! -e .tigger/COMMIT_EDITMSG ]
+        then
+            touch .tigger/COMMIT_EDITMSG
+        fi
+        for file_name in $(ls ./ | grep -v ^tigger)
+        do
+            tigger-add "$file_name"
+        done
+        if [ -e .tigger/index ]
+        then
+            tigger-commit -m "$file_name"
+        fi
+    fi
+fi

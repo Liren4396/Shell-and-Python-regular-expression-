@@ -1,0 +1,105 @@
+#!/bin/dash
+if [ ! -e .tigger ]
+then
+    echo tigger-status: error: tigger repository directory .tigger not found
+    exit 1 
+fi
+if [ -e .tigger/COMMIT_EDITMSG ]
+then
+    line=$(wc -l .tigger/COMMIT_EDITMSG | cut -d' ' -f1)
+    count=$(($line - 1))
+fi
+cat /dev/null >.tigger/status.txt
+for file in $(ls)
+do
+    echo "$file" >>.tigger/status.txt
+done
+if [ -e .tigger/index ]
+then
+    for file in $(ls .tigger/index)
+    do
+        echo "$file" >>.tigger/status.txt
+    done
+fi
+if [ -e .tigger/repository ]
+then
+    for file in $(ls .tigger/repository/$count)
+    do
+        echo "$file" >>.tigger/status.txt
+    done
+fi
+echo "`sort .tigger/status.txt | uniq`" >.tigger/status.txt
+for file in $(cat .tigger/status.txt)
+do
+    curr_index=1
+    curr_repository=1
+    index_repository=1
+    curr_num=$(ls | wc -l)
+    if [ -e .tigger/index ]
+    then
+        index_num=$(ls .tigger/index | wc -l)
+    fi
+    if [ -e .tigger/repository ]
+    then
+        repository_num=$(ls .tigger/repository/$count/ | wc -l)
+    fi
+    if [ -e .tigger/index/"$file" ] && [ -e "$file" ]
+    then
+        diff_file=$(diff "$file" ".tigger/index/$file")
+        if [ "$diff_file" = "" ]
+        then
+            curr_index=0 # current file and index file are same
+        fi
+    fi
+    if [ -e .tigger/repository/"$count"/"$file" ] && [ -e "$file" ]
+    then
+        diff_file=$(diff "$file" ".tigger/repository/$count/$file")
+        if [ "$diff_file" = "" ]
+        then
+            curr_repository=0 # current file and repository file are same
+        fi
+    fi
+    if [ -e .tigger/repository/"$count"/"$file" ] && [ -e .tigger/index/"$file" ]
+    then
+        diff_file=$(diff ".tigger/index/$file" ".tigger/repository/$count/$file")
+        if [ "$diff_file" = "" ]
+        then
+            index_repository=0 # index and repository file are same
+        fi
+    fi
+    if [ -e .tigger/index/"$file" ] && [ ! -e "$file" ] && [ -e .tigger/repository/"$count"/"$file" ]
+    then
+        echo "$file - file deleted"
+    elif [ ! -e .tigger/index/"$file" ] && [ ! -e "$file" ] && [ ! -e .tigger/index/"$file" ]
+    then
+        echo "$file - deleted"
+    elif [ -e .tigger/index/"$file" ] && [ ! -e "$file" ] && [ ! -e .tigger/repository/"$count"/"$file" ]
+    then
+        echo "$file - added to index, file deleted"
+    elif [ -e .tigger/index/"$file" ] && [ ! -e .tigger/repository/"$count"/"$file" ] && [ -e "$file" ]
+    then
+        if [ "$curr_index" -eq 0 ]
+        then
+            echo "$file - added to index"
+        else
+            echo "$file - added to index, file changed"
+        fi
+    elif [ "$curr_repository" -eq 1 ] && [ "$curr_index" -eq 1 ] && [ "$index_repository" -eq 1 ]
+    then
+        if [ -e .tigger/index/"$file" ] && [ -e "$file" ] && [ -e .tigger/repository/"$count"/"$file" ]
+        then
+            echo "$file - file changed, different changes staged for commit"
+        else
+            echo "$file - untracked"
+        fi
+    elif [ "$curr_repository" -eq 1 ] && [ "$curr_index" -eq 0 ] && [ "$index_repository" -eq 1 ]
+    then
+        echo "$file - file changed, changes staged for commit"
+    elif [ "$curr_repository" -eq 1 ] && [ "$curr_index" -eq 1 ] && [ "$index_repository" -eq 0 ]
+    then
+        echo "$file - file changed, changes not staged for commit"
+    elif [ "$curr_repository" -eq 0 ] && [ "$curr_index" -eq 0 ] && [ "$index_repository" -eq 0 ]
+    then
+        echo "$file - same as repo"
+    fi
+done

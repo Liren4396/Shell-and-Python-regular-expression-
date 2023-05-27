@@ -1,0 +1,657 @@
+#! /usr/bin/env python3
+from calendar import c
+import sys,re
+import os
+
+prev = None
+flag_n = 0
+flag_f = 0
+flag_i = 0
+flag_input_file = 0
+flag_comment = 0
+flag_address = 0
+position_comment = -1
+count_p = 0
+
+def is_number(s):
+    if s == None:
+        return False
+    try:
+        int(s)
+        return True
+    except ValueError:
+        pass
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+    return False
+
+def translate_regex(s):
+    s = re.sub('/', '', s)
+    s = re.sub('\^', '^', s)
+    s = re.sub('\$', '$', s)
+    s = re.sub(' ', '', s)
+    return s
+
+for i in sys.argv[1:]:
+    if i == '-i':
+        flag_i = 1
+    if i == '-n':
+        flag_n = 1
+    if i == '-f':
+        flag_f = 1
+
+
+
+
+slippy_command = ''
+
+for i in sys.argv[1]:
+    if i == '#':
+        break
+    else:
+        slippy_command += i
+
+
+list_address_d = list()
+list_1 = list()
+file_name = list()
+list_copy = list()
+
+if flag_f == 1 and flag_n != 1:
+    if flag_i == 1:
+        file = open(sys.argv[3], 'r')
+    else:
+        file = open(sys.argv[2], 'r')
+    count = 0
+    for lines in file:
+        lines = re.sub('#.*$', '', lines)
+        if count == 0:
+            slippy_command = lines
+            count = 1
+        else:
+            slippy_command += lines
+    if flag_f == 1 and flag_i == 1:
+        num = 4
+    else:
+        num = 3
+    for i in sys.argv[num:]:
+        if os.path.exists(i) == True:
+            file_name.append(i)
+            file = open(i, 'r')
+            for lines in file:
+                flag_input_file = 1
+                list_1.append(lines)
+elif flag_f == 0:
+    if flag_i == 1:
+        slippy_command = sys.argv[2]
+    for i in sys.argv[1:]:
+        if os.path.exists(i) == True:
+            file_name.append(i)
+            file = open(i, 'r')
+            for lines in file:
+                flag_input_file = 1
+                list_1.append(lines)
+
+
+# reset if input includes -n option
+
+if flag_n == 1:
+    slippy_command = sys.argv[2]
+
+
+if flag_f == 1 and flag_n == 1:
+    file = open(sys.argv[3], 'r')
+
+    count = 0
+    for lines in file:
+        lines = re.sub('#.*$', '', lines)
+        if count == 0:
+            slippy_command = lines
+            count = 1
+        else:
+            slippy_command += lines
+    for i in sys.argv[4:]:
+        
+        if os.path.exists(i) == True:
+            file = open(i, 'r')
+            for lines in file:
+                #lines = re.sub('\n', '', lines)
+                flag_input_file = 1
+                list_1.append(lines)
+                
+
+command_address = re.search('/\S.*\$/', slippy_command)
+if command_address is not None:
+    command_address = command_address.group(0)
+
+# distinguish if has $
+for i in slippy_command:
+    if i == '$':
+        flag_address = 1
+        
+        
+        break
+copy_slippy_command = slippy_command
+if re.search('\$d', slippy_command) is not None or re.search('\$p', slippy_command) is not None or re.search('\$q', slippy_command) is not None:
+    slippy_command = re.sub('\$', '', slippy_command)
+    
+
+flag_p = 0
+partition_flag = slippy_command
+if re.search(';', slippy_command) is not None:
+    partition_flag = re.split(';', slippy_command)
+    flag_p = 1
+elif re.search('\n', slippy_command) is not None:
+    partition_flag = re.split('\n', slippy_command)
+    flag_p = 1
+command_q = 0
+command_p = 0
+command_d = 0
+command_s = 0
+command_i = 0
+command_a = 0
+command_c = 0
+first_order = 0
+keyword = ''
+
+
+if re.search(';', slippy_command) is not None:
+    order = re.split(';', slippy_command)
+    if re.search('q$', order[0]) is not None:
+        first_order = 'q'
+    elif re.search('d$', order[0]) is not None:
+        first_order = 'd'
+    elif re.search('p$', order[0]) is not None:
+        first_order = 'p'
+    elif re.search('s$', order[0]) is not None:
+        first_order = 's'
+elif re.search('\n', slippy_command) is not None:
+    order = re.split('\n', slippy_command)
+    if re.search('q$', order[0]) is not None:
+        first_order = 'q'
+    elif re.search('d$', order[0]) is not None:
+        first_order = 'd'
+    elif re.search('p$', order[0]) is not None:
+        first_order = 'p'
+    elif re.search('s$', order[0]) is not None:
+        first_order = 's'
+
+
+switch_p = 0
+switch_d = 0
+switch_d1 = 0
+switch_s = 0
+switch_s1 = 0
+switch_s_semicolon = 0
+count_line_command_a = 0
+count_line_command_i = 0
+count_line_command_c = 0
+count_error_line = 0
+
+if re.search('s/[^/]*;[^/]*/.*/', slippy_command) is not None or re.search('s/[^/]*/[^/]*;[^/]*/', slippy_command) is not None:
+    switch_s_semicolon = 1
+    
+slippy_command = re.sub(' ', '', slippy_command)
+if re.search('\di', slippy_command) is not None or re.search('^i', slippy_command) is not None or re.search('\$i', slippy_command) is not None:
+    command_i = slippy_command
+elif re.search('\da', slippy_command) is not None or re.search('^a', slippy_command) is not None or re.search('\$a', slippy_command) is not None:
+    command_a = slippy_command
+elif re.search('\dc', slippy_command) is not None or re.search('^c', slippy_command) is not None or re.search('\$c', slippy_command) is not None:
+    command_c = slippy_command
+elif flag_p == 1:
+    for i in partition_flag:
+        if re.search('q', i) is not None and command_q == 0:
+            if flag_p == 1:
+                command_q = i
+            else:
+                command_q = partition_flag
+        elif re.search('p', i) is not None and command_p == 0:
+            if flag_p == 1:
+                command_p = i
+            else:
+                command_p = partition_flag
+        elif re.search('d', i) is not None and command_d == 0:
+            if flag_p == 1:
+                command_d = i
+            else:
+                command_d = partition_flag
+        elif re.search('s', i) is not None:
+            if switch_s_semicolon >= 0:
+                if flag_p == 1:
+                    if command_s == 0:
+                        command_s = i
+                    else:
+                        command_s = command_s + ';' +  i
+                else:
+                    if command_s == 0:
+                        command_s = partition_flag
+                    else:
+                        command_s += command_s + ';' + partition_flag
+                switch_s_semicolon -= 1
+else:
+    if re.search('d$', slippy_command) is not None:
+        command_d = slippy_command
+    elif re.search('p$', slippy_command) is not None:
+        command_p = slippy_command
+    elif re.search('q$', slippy_command) is not None:
+        command_q = slippy_command
+    elif re.search('s\S', slippy_command) is not None and command_p == 0 and command_d == 0 and command_q == 0:
+        command_s = slippy_command    
+line_number = 0
+len_list = len(list_1)
+
+if flag_i == 1:
+    for i in file_name:
+        f = open(i, "w")
+        f.write('')
+        f.close()
+
+while True:
+    #read line
+    if flag_input_file == 1:
+        if line_number < len_list:
+            line = list_1[line_number]
+        else:
+            break
+    else:
+        line = sys.stdin.readline()
+    line_number += 1
+    if line == '':
+            break
+    
+    #slippy a command
+    if command_a != 0:
+        keyword = re.search('a.*', command_a).group(0)
+        keyword = re.sub('a', '', keyword)
+        if re.search('^a', command_a) is None and re.search('\$a', command_a) is None:
+            count_line = re.search('\da', command_a).group(0)
+            count_line = int(re.sub('a', '', count_line))
+    
+            if count_line == count_line_command_a:
+                print(keyword)
+            count_line_command_a += 1
+    #slippy i command
+    if command_i != 0 and command_i != '0':
+        keyword = re.search('i.*', command_i).group(0)
+        keyword = re.sub('i', '', keyword)
+        
+        if re.search('^i', command_i) is not None:
+            print(keyword)
+        elif re.search('\$i', command_i) is None:
+            count_line = re.search('\di', command_i).group(0)
+            count_line = int(re.sub('i', '', count_line))
+            
+            if count_line == count_line_command_i + 1:
+                print(keyword)
+            count_line_command_i += 1
+    #slippy c command
+    count_line_c = 0
+    if command_c != 0:
+        keyword = re.search('c.*', command_c).group(0)
+        keyword = re.sub('c', '', keyword)
+        if re.search('^c', command_c) is not None:
+            count_line_c == line_number
+            keyword = keyword + '\n'
+        else:
+            count_line_c = re.search('\dc', command_c).group(0)
+            count_line_c = int(re.sub('c', '', count_line_c))
+            keyword = keyword + '\n'
+            count_line_command_c += 1
+    #slippy p command
+    if command_d != 0:
+        # two cases, use flag_d to find if it's pure number or regex
+        flag_d = re.search('/', command_d)
+        if flag_d is not None:
+
+            command_d = re.sub('d', '', command_d)
+            partition = re.split(',', command_d)
+            regex_start = partition[0]
+            
+            regex_end = None
+            if len(partition) > 1:
+                regex_end = partition[1]
+            regex = command_d
+            if command_address is not None and (re.search('\$', regex_end) is None or re.search('\$', regex_start) is None):
+                if regex_start == command_address:
+                    regex_start = translate_regex(regex_start)
+                    if re.search(regex_start, line) is not None:
+                        
+                        break    
+                if re.search(regex_end, command_address) is not None:
+                    regex_end = translate_regex(regex_end)
+                    if re.search(regex_end, line) is not None:
+                        break
+                
+            elif regex_start is not None and regex_end is not None:
+
+                if re.search('/', regex_end) is not None and re.search('/', regex_start) is not None:
+                    regex_start = translate_regex(regex_start)
+                    if len(partition) > 1:
+                        regex_end = translate_regex(regex_end)
+                    word_begin = re.search(regex_start, line)
+                    if word_begin is not None:
+                        switch_d = 1
+                    if regex_end is not None:
+                        word_end = re.search(regex_end, line)
+                        if word_end is not None:
+                            switch_d = 0
+                            if flag_input_file == 1:
+                                if line_number < len_list:
+                                    line = list_1[line_number]
+                                else:
+                                    break
+                            else:
+                                line = sys.stdin.readline()
+                            line_number += 1
+                    if switch_d == 1:
+                        continue
+                elif re.search('/', regex_end) is not None:
+                    regex_end = translate_regex(regex_end)
+                    
+                    if int(regex_start) >= line_number:
+                        switch_d = 1
+                    
+                    if re.search(regex_end, line) is not None and switch_d == 1:
+                        if switch_d1 > 1:
+                            print(line, end='')
+                        else:
+                            switch_d1 += 1
+                    
+                    if switch_d == 1 and switch_d1 != 0:
+                        continue
+                elif re.search('/', regex_start) is not None:
+                    regex_start = translate_regex(regex_start)
+                        
+                    
+                    if re.search(regex_start, line) is not None:
+                        switch_d = 1
+                        continue
+
+                    if switch_d == 1 and int(regex_end) >= line_number:
+                        continue
+                
+            else:
+                
+                regex_start = translate_regex(regex_start)
+                if re.search(regex_start, line) is not None:
+                    switch_d = 1
+
+                if switch_d == 1 and regex_end is None:
+                    switch_d = 0
+                    if command_q != 0 and line_number == address and first_order == 'q':
+                        if flag_n == 0:
+                            print(line, end='')
+                            break
+                    else:
+
+                        continue
+
+                elif switch_d == 1:
+                    continue
+                else:
+                    
+                    #print('regex', regex_start,re.search(regex_start, line), 'line',line)
+                    if re.search(regex_start, line) is not None:
+                        
+                        continue
+        else:
+            
+            if command_d == 'd' and flag_address == 0:
+                break
+            if command_d == 'd' and flag_address == 1:
+                prev = line
+                list_address_d.append(prev)
+                continue
+            else:
+                
+                command_d = re.sub('d', '', command_d)
+                if re.search(',', command_d) is not None:
+                    partition = re.split(',', command_d)
+                    line_start = int(partition[0])
+                    line_end = int(partition[1])
+                    if line_start <= line_number and line_end >= line_number:
+                        continue
+                    
+                else:
+                    address = int(command_d)
+
+                    if line_number == address:
+                        if flag_input_file == 1:
+                            if line_number < len_list:
+                                line = list_1[line_number]
+                            else:
+                                break
+                        else:
+                            line = sys.stdin.readline()
+                            line_number += 1
+    # slippy p command_p
+    print_p = None  
+    if command_p != 0:
+        # two cases, use flag_p to find if it's pure number or regex
+        
+        flag_p = re.search('/', command_p)
+
+        if flag_p is not None:
+            command_p1 = re.sub('p', '', command_p)
+            partition = re.split(',', command_p1)
+            regex_start = partition[0]
+            regex_start = translate_regex(regex_start)
+            regex_end = None
+            if len(partition) > 1:
+                regex_end = partition[1]
+                regex_end = translate_regex(regex_end)
+                
+            word_begin = re.search(regex_start, line)
+
+            if word_begin is not None and switch_p == 0:
+                switch_p = 1
+
+            if is_number(regex_end) == True:
+                if count_p > int(regex_end) and word_begin is None:
+                    switch_p = 0
+            
+            if regex_end is None:
+                if switch_p == 1:
+                    print_p = line
+                    switch_p = 0
+            else:
+                word_end = re.search(regex_end, line)
+                if word_end is not None and word_begin is None:
+                    switch_p = 0
+            
+            if switch_p == 1:
+                print_p = line
+                count_p += 1
+            
+        else:
+            
+            if slippy_command == 'p' and flag_address == 0:
+                print(line, end ='')
+            elif slippy_command == 'p' and flag_address == 1:
+
+                prev = line
+
+            else:
+                #print(partition)
+                command_p1 = re.sub('p', '', command_p)
+                partition = re.split(',', command_p1)
+                address_start = int(partition[0])
+                if flag_address == 1:
+                    prev = line
+                address_end = None
+                line_number = int(line_number)
+                #print(address_start, address_end)
+                if int(len(partition)) > 1:
+                    address_end = int(partition[1])
+                if address_end == None:
+                    if line_number == address_start:
+                        print(line, end='')
+                elif line_number >= address_start and line_number <= address_end:
+                    print(line, end='')
+    
+    # slippy s command
+    if command_s != 0:
+    # two general cases: /xx/s/// and  s//
+    # use split to find each element
+        flag_partition = re.search(r's\S', command_s)
+        flag_partition = flag_partition.group(0)
+        
+        flag_partition = re.sub('s', '', flag_partition)
+        prev_partition = flag_partition
+        if re.search('\w', flag_partition) is not None:
+            pass
+        else:
+            if re.sub('\\' + flag_partition, '/', command_s) is not None:
+                command_s = re.sub('\\' + flag_partition, '/', command_s)
+                flag_partition = '/'
+            else:
+                if re.search('\\/', command_s) is not None:
+                    command_s = re.sub('\\/', prev_partition, command_s)
+        partition = re.split(flag_partition, command_s)
+        if re.search('s', partition[0]) is not None or re.search('s', partition[1]) is not None:
+            flag_s_line = 0
+            s_line = 0
+            if command_s[1] == 's':
+                flag_s_line = 1
+                s_line = command_s[0]
+            flag_s = re.search(flag_partition, command_s)
+            if flag_s is not None:
+                flag_g = 0
+                words = re.split(flag_partition, command_s)
+                regex = words[1]
+                regex = translate_regex(regex)
+                sub_word = words[2]
+                if len(words) > 3:
+                    if words[3] == 'g':
+                        flag_g = 1
+                word = re.search(regex, line)
+                if word is not None:
+                    if flag_s_line == 1:
+                        if int(s_line) == int(line_number):
+                            if flag_g == 1:
+                                line = re.sub(regex, sub_word, line)
+                            else:
+                                
+                                line = re.sub(regex, sub_word, line, 1)
+                    else:
+                        if flag_g == 1:
+                            line = re.sub(regex, sub_word, line)
+                        else:
+                            line = re.sub(regex, sub_word, line, 1)
+        else:
+            
+            area_s = re.search('/.*/,/.*/s', command_s)
+
+            if area_s is not None:
+                
+                area_s = re.sub('s', '', area_s.group(0))
+                area = re.split(',', area_s)
+                start_area = area[0]
+                start_area = translate_regex(start_area)
+                
+                end_area = None
+                if len(area) > 1:
+                    end_area = area[1]
+                    end_area = translate_regex(end_area)
+                
+                find_word = partition[5]
+                sub_word = partition[6]
+                if re.search(start_area, line) is not None:
+                    switch_s = 1
+                    switch_s1 = 0
+                if switch_s == 1 and switch_s1 == 0:
+                    if find_word == '.':
+                        if line_number > 10:
+                            line = re.sub('^\S', sub_word, line)
+                            print(line, end='')
+                    else:
+                        line = re.sub(find_word, sub_word, line)
+                if re.search(end_area, line) is not None and switch_s == 1:
+                    switch_s = 0
+            
+            else:
+                regex_1 = translate_regex(partition[1])
+                regex_2 = translate_regex(partition[3])
+                sub_word = partition[4]
+                flag_g = 0
+                if partition[5] is not None:
+                    flag_g = 1
+                    word = re.search(regex_1, line)
+                    if word is not None:
+                        if flag_g == 1:
+                            line = re.sub(regex_2, sub_word, line)
+                        else:
+                            line = re.sub(regex_2, sub_word, line, 1)
+    address = 0
+    
+    # print line
+    if flag_i == 1:
+        for i in file_name:
+            f = open(i, "a")
+            f.write(line)
+            f.close
+        continue
+    if print_p == line:
+        print_p = re.sub('None', '', str(print_p))
+        print(print_p, end='')
+        
+    if print_p != line and first_order == 'p' and command_q == 0:
+        print_p = re.sub('None', '', str(print_p))
+        print(print_p, end='')
+    command_i = str(command_i)
+    if flag_n == 0 and re.search('\$i', command_i) is None:
+        
+        if command_c != 0:
+            if count_line_c == count_line_command_c:
+                line = keyword
+        print(line, end='')
+    if re.search('^a', slippy_command) is not None:
+        print(keyword)
+    elif re.search('\$i', command_i) is not None:
+        list_copy.append(line)
+        
+    # slippy q command
+    if command_q != 0:
+        flag_q = re.search('/', command_q)
+        if flag_q is not None:
+            command_q = re.sub('q','',command_q)
+            regex = command_q[0:-1]
+            regex = translate_regex(regex)
+
+            word = re.search(regex,line)
+            if word is not None:
+                
+                break
+        else:
+            if command_q == 'q' and flag_address == 0:
+                break
+            elif command_q == 'q' and flag_address == 1:
+                pass
+            else:
+                command_q = re.sub('q','',command_q)
+                address = int(command_q)
+                if line_number == address:
+                    break
+
+# final print
+if flag_address == 1 and prev != None and re.search('\$p', copy_slippy_command) is not None:
+    print(prev, end ='')
+if command_d == 'd' and flag_address == 1 and prev != None:
+    for i in list_address_d:
+        if i != prev:
+            print(i, end='')
+elif command_a != 0 and re.search('\$a', command_a) is not None:
+    print(keyword)
+
+elif command_i != 0 and re.search('\$i', command_i) is not None:
+    i = 0
+    
+    for word in list_copy:
+        if i == line_number - 2:
+            print(keyword)
+        print(word, end='')
+        i += 1

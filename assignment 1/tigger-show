@@ -1,0 +1,48 @@
+#!/bin/dash
+
+if [ ! -e .tigger ]
+then
+    echo tigger-show: error: tigger repository directory .tigger not found
+    exit 1 
+fi
+if [ "$1" = "" ]
+then
+    echo "usage: tigger-show <commit>:<filename>"
+    exit 1
+fi
+echo $1 >.tigger/temperaty_file
+
+filename=$(sed 's/.*://g' .tigger/temperaty_file)
+
+flag_colon=$(grep \: .tigger/temperaty_file)
+
+if [ "$flag_colon" = "" ]
+then
+    echo "tigger-show: error: invalid object a"
+    exit 1 
+fi
+doc=repository
+num=$(cut -d':' -f1 ./.tigger/temperaty_file)
+
+if [ ! "$num" ]
+then
+    if [ -e ./.tigger/index ] && [ -e ./.tigger/index/"$filename" ]
+    then
+        cat ./.tigger/index/"$filename"
+    else
+        echo "tigger-show: error: '$filename' not found in index"
+    fi
+else
+    if [ -e ./.tigger/"$doc"/"$num" ] && [ -e ./.tigger/"$doc"/"$num"/"$filename" ]
+    then
+        cat ./.tigger/"$doc"/"$num"/"$filename"
+    else
+        line=$(wc -l .tigger/COMMIT_EDITMSG | cut -d' ' -f1)
+        if [ "$num" -ge "$line" ]
+        then
+            echo "tigger-show: error: unknown commit '$num'"
+        else
+            echo "tigger-show: error: '$filename' not found in commit $num"
+        fi
+    fi
+fi

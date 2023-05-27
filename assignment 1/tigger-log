@@ -1,0 +1,7 @@
+#!/bin/dash
+if [ ! -e .tigger ]
+then
+    echo tigger-log: error: tigger repository directory .tigger not found
+    exit 1 
+fi
+cat .tigger/COMMIT_EDITMSG

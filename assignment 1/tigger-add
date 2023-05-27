@@ -1,0 +1,34 @@
+#!/bin/dash
+index_path=index
+if [ -e .tigger/branch ]
+then
+    index_path=$(cat .tigger/branch_name)
+    if [ "$index_path" = "master" ]
+    then
+        index_path="index"
+    elif [ "$index_path" != "master" ]
+    then
+        index_path="$index_path"/index/
+    fi
+fi
+for file in "$@"
+do
+    if [ -e ./.tigger/$index_path/"$file" ] && [ ! -e $file ]
+    then
+        rm ./.tigger/$index_path/"$file"
+    elif [ -e .tigger ]
+    then
+        if [ ! -e .tigger/$index_path ]
+        then
+            mkdir .tigger/$index_path   
+        fi
+        if [ -e "$file" ]
+        then
+            cp "$file" .tigger/$index_path
+        else
+            echo "tigger-add: error: can not open '$file'"
+        fi
+    else
+        echo tigger-add: error: tigger repository directory .tigger not found
+    fi
+done

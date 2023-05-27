@@ -1,0 +1,80 @@
+#!/bin/dash
+
+delete=0
+if [ ! -e .tigger ]
+then
+    echo tigger-branch: error: tigger repository directory .tigger not found
+    exit 1 
+fi
+if [ ! -e .tigger/repository ]
+then
+    echo "tigger-branch: error: this command can not be run until after the first commit"
+    exit 1
+fi
+#read parameter
+for parameter in "$@"
+do
+    if [ "$parameter" = '-d' ]
+    then
+        delete=1
+    fi
+done
+# print every branch name
+if [ "$1" = "" ]
+then
+    if [ ! -e .tigger/repository ]
+    then
+        echo "tigger-branch: error: this command can not be run until after the first commit"
+    else
+        for file in $(ls .tigger/branch)
+        do
+            echo "$file"
+        done
+        echo master
+    fi
+
+# create new branch
+elif [ "$delete" -eq 0 ]
+then
+    repo_path=$(cat .tigger/last_commit)
+    for file in "$@"
+    do
+        if [ "$file" = "master" ]
+        then
+            echo "tigger-branch: error: branch 'master' already exists"
+        elif [ "$file" != "" ]
+        then
+            if [ ! -e .tigger/branch ]
+            then
+                mkdir .tigger/branch
+                
+            fi
+            if [ ! -e .tigger/branch/"$file" ]
+            then
+                mkdir .tigger/branch/"$file"
+                cp -r $repo_path .tigger/branch/"$file"/index
+            else
+                echo "tigger-branch: error: branch '$file' already exists"
+            fi
+        fi
+    done
+else
+# delete branch
+    for file in "$@"
+    do
+        if [ "$file" = "master" ]
+        then
+            echo "tigger-branch: error: can not delete branch 'master'"
+
+        elif [ "$file" != '-d' ] && [ x"$file" != x ]
+        then
+            if [ -e .tigger/branch/"$file" ]
+            then
+                rm -r .tigger/branch/"$file"
+                echo "Deleted branch '$file'"
+            else
+                echo "tigger-branch: error: branch '$file' doesn't exist"
+            fi
+        fi
+    done
+fi

@@ -1,0 +1,186 @@
+#!/bin/dash
+flag1=-1
+flag2=-1
+#initialize flag
+flag=$1
+if [ ! -e .tigger ]
+then
+    echo tigger-rm: error: tigger repository directory .tigger not found
+    exit 1 
+fi
+for flag in "$@"
+do
+    if [ "$flag" = "-cached" ] || [ "$flag" = "-force" ]
+    then
+        echo "usage: tigger-rm [--force] [--cached] <filenames>"
+        exit 1
+    fi
+    if [ "$flag" = "--cached" ]
+    then
+        flag1=--cached
+    elif [ "$flag" = "--force" ]
+    then
+        flag2=--force
+    fi
+done
+
+for file in "$@"
+do
+    if [ "$file" != "--cached" ] && [ "$file" != "--force" ] #avoid file = "--force" or "--cached"
+    then
+    if [ -e .tigger/COMMIT_EDITMSG ]
+    then
+        line=`wc -l .tigger/COMMIT_EDITMSG | cut -d' ' -f1`
+        count=$(($line - 1))
+    fi
+    w=1
+    c=1
+    c_1=1
+    c_2=1
+        if [ "$flag1" != "--cached" ] && [ "$flag2" != "--force" ] #rm
+        then
+            if [ -e .tigger/index ]
+            then
+                num=$(ls .tigger/index | wc -l) #index num
+            else
+                num=-1
+            fi
+            if [ -e .tigger/repository/"$count" ]
+            then
+                num_1=$(ls .tigger/repository/"$count"/ | wc -l) #repository num
+            else
+                num_1=-1
+            fi
+            num_2=$(ls ./ | wc -l) #current num
+            if [ ! -e ./.tigger/index/"$file" ]
+            then
+                c_2=0
+            fi
+            if [ "$num" -eq "$num_1" ]
+            then
+                c=0
+            fi
+            if [ "$num_2" -eq "$num_1" ]
+            then
+                w=0
+            fi
+            if [ "$num_2" -eq "$num" ]
+            then
+                c_1=0
+            fi
+            if [ -e .tigger/index/"$file" ]
+            then
+                line_1=$(wc -l .tigger/index/"$file" | cut -d' ' -f1)
+            fi
+            if [ -e .tigger/repository/"$count"/"$file" ]
+            then 
+                line_2=$(wc -l .tigger/repository/"$count"/"$file" | cut -d' ' -f1)
+            fi
+            if [ -e "$file" ]
+            then
+                line_3=$(wc -l "$file" | cut -d' ' -f1)
+            fi
+            if [ -e $file ] && [ -e .tigger/repository/"$count"/"$file" ]
+            then
+                diff_file=$(diff "./$file" ".tigger/repository/$count/$file")
+                if [ "$diff_file" = "" ] && [ "$line_2" -eq "$line_3" ]
+                then
+                    w=0 # current file and repository file are same
+                fi
+            fi
+            if [ -e "$file" ] && [ -e .tigger/index/"$file" ]
+            then
+                diff_file_1=$(diff "./$file" ".tigger/index/$file")
+                if [ "$diff_file_1" = "" ] && [ "$line_3" -eq "$line_1" ]
+                then
+                    c_1=0 # current file and index file are same
+                fi
+            fi
+            if [ -e ./.tigger/index/"$file" ] && [ -e .tigger/repository/"$count"/"$file" ]
+            then
+                diff_index=$(diff ".tigger/index/$file" ".tigger/repository/$count/$file")
+                if [ "$diff_index" = "" ] && [ "$line_1" -eq "$line_2" ]
+                then
+                    c=0 #index file and repository file are same
+                fi
+            fi
+            
+            if [ "$c" -eq 1 ] && [ "$c_1" -ne 1 ] && [ "$c_2" -ne 0 ]
+            then
+                echo "tigger-rm: error: '$file' has staged changes in the index"
+            elif [ "$c_2" -eq 0 ]
+            then
+                echo "tigger-rm: error: '$file' is not in the tigger repository"
+            elif [ "$c" -eq 1 ] && [ "$c_1" -eq 1 ]
+            then
+                echo "tigger-rm: error: '$file' in index is different to both the working file and the repository"   
+            elif [ ! -e .tigger/index/"$file" ]
+            then
+                echo "tigger-rm: error: '$file' is not in the tigger repository"
+            elif [ "$w" -eq 1 ]
+            then
+                echo "tigger-rm: error: '$file' in the repository is different to the working file"
+            else
+                rm .tigger/index/"$file"
+                if [ -e "$file" ]
+                then
+                    rm "$file"
+                fi
+            fi
+            
+
+        elif [ "$flag1" = "--cached" ] && [ "$flag2" = "--force" ] #rm -cf
+        then
+            rm -f ./.tigger/index/"$file"
+            
+        elif [ "$flag1" = "--cached" ] #rm - c
+        then
+            if [ ! -e ./.tigger/index/"$file" ]
+            then
+                c_2=0
+            fi
+            if [ -e ./"$file" ] && [ -e .tigger/index/"$file" ]
+            then
+                diff_file_1=$(diff "./$file" ".tigger/index/$file")
+                if [ "$diff_file_1" = "" ]
+                then
+                    c_1=0 # current file and index file are same
+                fi
+            fi
+            if [ -e ./.tigger/index/"$file" ] && [ -e .tigger/repository/"$count"/"$file" ]
+            then
+                diff_index=$(diff ".tigger/index/$file" ".tigger/repository/$count/$file")
+                if [ "$diff_index" = "" ]
+                then
+                    c=0 #index file and repository file are same
+                fi
+            fi
+            
+            if [ "$c_2" -eq 0 ]
+            then
+                echo "tigger-rm: error: '$file' is not in the tigger repository"
+            elif [ "$c" -eq 1 ] && [ "$c_1" -eq 1 ]
+            then
+                echo "tigger-rm: error: '$file' in index is different to both the working file and the repository" 
+            else
+                rm ./.tigger/index/"$file"
+            fi
+        elif [ "$flag2" = "--force" ] #rm -f
+        then
+            if [ ! -e ./.tigger/index/"$file" ]
+            then
+                c_2=0
+            fi
+            if [ "$c_2" -eq 0 ]
+            then
+                echo "tigger-rm: error: '$file' is not in the tigger repository"
+            else
+                rm -f ./.tigger/index/"$file"
+                if [ -e "$file" ]
+                then
+                    rm "$file"
+                fi
+            fi
+        fi
+    fi
+done    
