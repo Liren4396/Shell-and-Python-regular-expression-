@@ -1,0 +1,600 @@
+CEIC0010 Mass Transfer and Material Balances
+CEIC0050 Atmospheric Process Chemistry
+CEIC1000 Sustainable Product Engineering and Design
+CEIC1001 Engineering Chemistry
+CEIC2000 Chemical Engineering Design 2
+CEIC2001 Chemical Engineering Fundamentals 1
+CEIC2002 Chemical Engineering Fundamentals 2
+CEIC2003 Chemical Engineering Laboratory 1
+CEIC2004 Industrial Chemistry for Chemical Engineers
+CEIC2005 Chemical Engineering Applications 1
+CEIC2009 Material and Energy Balances in the Chemical Process Industry
+CEIC2011 Instrumental Analysis - Theory
+CEIC2012 Instrumental Analysis - Practical
+CEIC2020 Introduction to Numerical Methods
+CEIC2110 Material & Energy Balances
+CEIC2120 Fluid Flow
+CEIC2130 Heat Transfer
+CEIC3000 Chemical Engineering Fundamentals 3
+CEIC3001 Chemical Engineering Applications 2
+CEIC3002 Chemical Engineering Laboratory 2
+CEIC3004 Chemical Engineering Design 3A
+CEIC3005 Chemical Engineering Design 3B
+CEIC3006 Chemical Engineering Design 3C
+CEIC3010 Reaction Engineering
+CEIC3070 Process Control
+CEIC3110 Thermodynamics
+CEIC4000 Environment and Sustainability
+CEIC4001 Chemical Engineering Design 4A
+CEIC4002 Thesis A
+CEIC4003 Thesis B
+CEIC4004 Chemical Engineering Design 4B
+CEIC4005 Thesis
+CEIC4070 Laboratory Automation Science
+CEIC4095 Special Research Project Practice
+CEIC4096 Research Project Theory Extended
+CEIC4120 Management and Plant Operation
+CEIC4130 Plant Operation (BE/MBio Med Program students only)
+CEIC4200 Industrial Experience
+CEIC4201 Industrial Experience
+CEIC6004 POlymers
+CEIC6005 Fuel and Energy
+CEIC6031 Advanced Transport Phenomena
+CEIC6101 Advanced Reaction Engineering
+CEIC6102 Advanced Process Control
+CEIC6103 Advanced Particle & Serparation Process
+CEIC6104 Advanced Polymers
+CEIC6201 Minerals Engineering
+CEIC6202 Biochemical Processing 1
+CEIC6203 Environmental Management 2A
+CEIC6204 Business Mangement in Chemical Engineering A
+CEIC6205 Fuel & Energy 1
+CEIC6207 Environmental Management 2B
+CEIC6208 Business Managementin CE B
+CEIC6210 Biochemical Processing 2
+CEIC6211 Polymer Chemistry for Chem Eng
+CEIC8101 Reaction Engineering and Catalysis
+CEIC8102 Process Control
+CEIC8103 Particle & Separation Technology
+CEIC8104 Topics in Polymer Technology
+CEIC8105 Advanced Polymer Science and Research
+CEIC8201 Minerals Engineering 1
+CEIC8203 Environmental Management
+CEIC8204 Topics in Business Management in Chemical Engineering
+CEIC8205 Fuel and Energy Engineering
+CEIC8301 Electrochemical Engineering
+CEIC8302 Process Heat Transfer
+CEIC8303 Fouling in Process Industries and Equipment
+CEIC8310 Computing Studies in the Process Industries
+CEIC8311 Instrumental Analysis in the Proc Industries
+CEIC8312 Safety & Communication in the Process Industries
+CEIC8313 Environmental Technologies
+CEIC8319 Minor Project
+CEIC8320 Process Engineering Project for M.EngSc program only
+CEIC8321 Extension Research Project
+CEIC8330 Process Engineering in the Petroleum Industry
+CEIC8331 Process Engineering: Natural Gas and Light Hydrocarbons to Petrochemicals
+CEIC8332 Process Engineering in the Food Industry
+CEIC8335 Advanced Computer Methods in the Process Industries
+CEIC8336 Environmental Chemistry in the Process Industries
+CEIC8337 Particle Characterisation in the Process Industries
+CEIC8341 Membrane Technology in the Process Industries
+CEIC8351 Pharmaceutical Processing
+CHEM1000 Chemistry at the Cutting Edge
+CHEM1001 Introductory Chemistry
+CHEM1011 Essentials of Chemistry 1A
+CHEM1021 Essentials of Chemistry 1B
+CHEM1031 Higher Chemistry 1A
+CHEM1041 Higher Chemistry 1B
+CHEM1829 Biological Chemistry for Optometry Students B
+CHEM1831 Chemistry for Health, Exercise and Medical Science
+CHEM2011 Physical Chemistry
+CHEM2021 Organic Chemistry
+CHEM2031 Inorganic Chemistry and Structure
+CHEM2041 Chemical and Spectroscopic Analysis
+CHEM2718 Physical Chemistry for Materials Science and Engineering
+CHEM2828 Organic and Inorganic Chemistry for Nanotechnology
+CHEM2839 Inorganic Chemistry
+CHEM2921 Food Chemistry
+CHEM3011 Physical Chemistry
+CHEM3021 Organic Chemistry
+CHEM3031 Inorganic Chemistry
+CHEM3041 Analytical Chemistry
+CHEM3051 Medicinal Organic Chemistry
+CHEM3101 Project Laboratory in Chemistry
+CHEM3201 Topics in Contemporary Chemistry A
+CHEM3202 Topics in Contemporary Chemistry B
+CHEM3311 Environmental Chemistry
+CHEM3811 Food Chemistry 2
+CHEM3829 Organic Chemistry
+CHEM3901 Environmental Toxicology
+CHEM3997 Special Project in Chemistry 3
+CHEM3998 Special Project in Chemistry 2
+CHEM4003 Advanced Chemistry 4 Honours
+CHEM4004 Advanced Chemistry 4 Honours (Mid-Year Start)
+CHEM4005 Chemical Sciences 4 (Honours)
+CHEM4006 Honours in Medicinal Chemistry
+CHEM5003 Special Program (Chemistry Postgraduate Qualifying)
+CHEM7023 Master of Chemistry (Food and Drug) Project
+CHEM7111 Quality Assurance and Laboratory Practice
+CHEM7112 Analysis of Biological and Organic Materials
+CHEM7113 Elemental Analysis
+CHEM7114 Chromatography
+CHEM7115 Treatment of Analytical Data
+CHEM7116 Chromatography/Mass Spectrometry
+CHEM7117 Molecular Analysis
+CHEM7118 Surface Analysis of Materials
+CHEM7119 Research Skills
+CHEM7121 Research Project
+CHEN2050 Chemical Engineering Laboratory 1
+CHEN2061 Introduction to Process Chemistry 1
+CHEN2062 Introduction to Process Chemistry 2
+CHEN2140 Mass Transfer
+CHEN3021 Systems Modelling & Analysis
+CHEN3022 Process Modelling & Optimisation
+CHEN3031 Advanced Transport Phenomena
+CHEN3040 Separation Processes 1
+CHEN3050 Particle Mechanics
+CHEN3062 Particles, Separation, Heat Exchangers and Pressure Vessels
+CHEN3065 Plant and Equipment Design
+CHEN3067 Process Design & Economics
+CHEN3068 Process Design & Safety
+CHEN3080 Chemical Engineering Practice 2
+CHEN4031 Environmental Management 1
+CHEN4081 Design Project
+CHEN4091 Research Project Theory
+CHEN4092 Research Project Practice
+CHEN4093 Small Research Project Theory
+CHEN4094 Small Research Project Practice
+CHIL8104 The Effect of Social Adversity in Childhood
+CHIL8203 Infant Feeding and Nutrition 1
+CHIL8204 Infant Feeding and Nutrition 2
+CHIL9111 General Paediatrics and Child Health 1
+CHIL9112 General Paediatrics and Child Health 2
+CHIL9116 Clinical and Technical Skills 1
+CHIL9117 Clinical and Technical Skills 2
+CHIL9118 Clinical Paediatric Experience 1
+CHIL9119 Clinical Paediatric Experience 2
+CHIN2210 Chinese English Translation
+CHIN2211 Interpreting between Chinese and English
+CHIN2220 Contemporary Chinese Literature
+CHIN2221 Classical Chinese Literature
+CHIN2222 The Chinese Lyric Journey: Classical Poetry and Painting
+CHIN2301 Chinese Social and Cultural Change through Visual Art
+CHIN2302 Chinese Cinema
+CHIN2303 Gender in Contemporary Chinese Culture and Society
+CHIN2310 Along the Silk Road: Conquerors, Traders and Explorers
+CHIN2313 Introduction to Chinese Performing Arts
+CHIN2314 Introduction to Chinese Musical Culture
+CHIN2400 China Imagined and Perceived
+CHIN2500 Advanced Chinese Business Language
+CHIN2501 Chinese Business Enterprise
+CHIN2502 Commercial Chinese
+CHIN3004 Advanced Chinese (In-Country)
+CHIN4000 Chinese Honours Research Full-Time
+CHIN4050 Chinese Honours Research Part-Time
+CHIN4500 Combined Chinese Honours Research Full-Time
+CHIN4550 Combined Chinese Honours Research Part-Time
+CHIN5006 Business Chinese A
+CHIN5007 Business Chinese B
+CHIN5008 Chinese Language Management Case Studies
+CHIN5009 Chinese for Commercial Use
+CHIN5900 Chinese-English Translation
+CHIN5901 Chinese-English Professional Interpreting
+CHIN5905 Issues in Chinese Sociolinguistics
+CHIN5908 Chinese Management Case Studies
+CHIN5909 Chinese for Commercial Use
+CHIN5910 Chinese Poetry and Poetics: Theories of Translation
+CHIN5911 Major Chinese-English Translation Project
+CHIN5912 Australian-Chinese Communication in Documents
+CLIM4000 Climate Science (Honours Project)
+CMED9539 Psychiatry of Old Age
+CMED9540 Pharmacology
+CMED9541 Rehabilitation
+CMED9542 Healthy Aging
+CMED9543 Organisation and Delivery of Services for Older People
+CMED9544 Gerontology
+CMED9546 Major Project (Geriatric Medicine)
+CMED9547 Supervised Clinical Experience
+CMED9548 Clinical Geriatrics 1
+CMED9549 Clinical Geriatrics 2
+CMED9550 Clinical Examination
+COFA0201 Graphics and Contemporary Society
+COFA0202 Design, Interactivity and Emerging Media
+COFA0203 Collaboration & Visual Communication in Graphic Design
+COFA0204 Seeing Light as a Design Tool
+COFA0205 Curating Art and Exhibitions
+COFA0206 The Art of Plants and Nature
+COFA0207 Textiles: Tradition and Contemporary Technology
+COFA0208 Fashion 1980 - Now
+COFA0209 Cross-Cultural Sculpture
+COFA0210 Visual Identity in the Built Environment
+COFA0211 Print Advertising for a World Market
+COFA0212 Textiles for Interiors - Senses and Spaces
+COFA0213 Contemporary Aesthetics in Digital Architecture
+COFA0214 Creative Thinking Processes
+COFA0215 Society Through the Lens
+COFA0216 Celebrity and the Face in Cinema
+COFA0217 The Art of Scientific Visualisation
+COFA0218 Experiencing and Understanding Art
+COFA0219 Digital Illustration for Concept Art
+COFA0220 Spatial Design: Retail, Exhibition and Hospitality
+COFA0221 Draw Your World
+COFA0222 Unravelling Urban Design
+COFA0223 Visualising the Past
+COFA0225 Creative Character Design
+COFA0226 Digital Animation using Flash
+COFA0901 Graphics and Contemporary Society
+COFA0902 Design, Interactivity and Emerging Media
+COFA0905 Curating Art and Exhibitions
+COFA0907 Textiles: Technology and the Body
+COFA0908 Fashion 1980 - Now
+COFA0909 Cross Cultural Sculpture
+COFA0910 Visual Identity in the Built Environment
+COFA0911 Print Advertising for a World Market
+COFA0912 Textiles for Interiors: Senses and Spaces
+COFA0913 Contemporary Aesthetics in Digital Architecture
+COFA0914 Creative Thinking Processes
+COFA0915 Society through the Lens
+COFA0917 The Art of Scientific Visualisation
+COFA0918 Experiencing and Understanding Art
+COFA0919 Digital Illustration for Concept Art
+COFA0920 Spatial Design - Retail, Exhibition & Hospitality
+COFA0921 Draw Your World
+COFA0922 Unraveling Urban Design
+COFA0923 Visualising the Past
+COFA0925 Creative Character Design
+COFA0927 Performance Art
+COFA0928 Making Digital Holograms
+COFA0929 Making Analogue Holograms
+COFA0990 Cross-Disciplinary Art and Design 1
+COFA0991 Cross-Disciplinary Art and Design 2
+COFA0992 Cross-Disciplinary Art & Design 3
+COFA1100 Communication in Art, Design & Media
+COFA5000 Multi-Disciplinary Design Workshop A
+COFA5001 Multi-Disciplinary Design Workshop B
+COFA9500 Advanced Colour
+COMD2000 The Theory and Practice of Development
+COMD2010 (Un)Making the Third World: History and Global Development B
+COMD2020 Applied Development
+COMD2050 Environment, Sustainability and Development
+COMD4000 Development Studies Honours (Research) Full-Time
+COMD4050 Development Studies Honours (Research) Part-Time
+COMD4500 Combined Honours (Research) in Comparative Development F/T
+COMD4550 Combined Honours (Research) in Comparative Development P/T
+COMM5001 Business Communication, Ethics and Practice
+COMM5002 Managing for Value Creation 1
+COMM5003 Managing for Value Creation 2
+COMM5004 Business Capstone Project
+COMM5005 Quantitative Methods for Business
+COMP0011 Fundamentals of Computing
+COMP1400 Programming for Designers
+COMP1911 Computing 1
+COMP1917 Higher Computing 1
+COMP1921 Data Structures and Algorithms
+COMP1927 Higher Data Structures and Algorithms
+COMP2041 Software Construction: Techniques and Tools
+COMP2111 System Modelling and Design
+COMP2121 Microprocessors and Interfacing
+COMP2911 Engineering Design in Computing 2
+COMP2920 Professional Issues and Ethics for Computer Science
+COMP3111 Software Engineering
+COMP3120 Introduction to Algorithms
+COMP3121 Algorithms and Programming Techniques
+COMP3131 Programming Languages and Compilers
+COMP3141 Software System Design and Implementation
+COMP3151 Foundations of Concurrency
+COMP3152 Comparative Concurrency Semantics
+COMP3153 Algorithmic Verification
+COMP3161 Concepts of Programming Languages
+COMP3171 Object-Oriented Programming
+COMP3211 Computer Architecture
+COMP3222 Digital Circuits and Systems
+COMP3231 Operating Systems
+COMP3241 Real Time Systems
+COMP3311 Database Systems
+COMP3331 Computer Networks and Applications
+COMP3411 Artificial Intelligence
+COMP3421 Computer Graphics
+COMP3431 An Introduction to Intelligent Agent Architectures
+COMP3441 Cryptography and Distributed Systems Security
+COMP3511 Human Computer Interaction
+COMP3601 Design Project A
+COMP3711 Software Project Management
+COMP3821 Extended Algorithms & Programming Techniques
+COMP3881 Extended Digital Circuits & Systems
+COMP3891 Extended Operating Systems
+COMP3901 Special Project A
+COMP3902 Special Project B
+COMP3931 Extended Computer Networks and Applications
+COMP4001 Object-Oriented Software Development
+COMP4121 Advanced and Parallel Algorithms
+COMP4141 Theory of Computation
+COMP4161 Advanced Topics in Software Verification
+COMP4181 Language-based Software Safety
+COMP4211 Advanced Architectures and Algorithms
+COMP4314 Next Generation Database Systems
+COMP4317 XML and Databases
+COMP4335 Wireless Mesh and Sensor Networks
+COMP4336 Mobile Data Networking
+COMP4337 Securing Wireless Networks
+COMP4411 Experimental Robotics
+COMP4415 First-order Logic
+COMP4416 Intelligent Agents
+COMP4418 Knowledge Representation and Reasoning
+COMP4431 Game Design Workshop
+COMP4511 User Interface Design and Construction
+COMP4601 Design Project B
+COMP4905 Industrial Training 1
+COMP4906 Industrial Training 2
+COMP4910 Thesis Part A
+COMP4920 Professional Issues and Ethics
+COMP4930 Thesis Part A
+COMP4931 Thesis Part B
+COMP9008 Software Engineering
+COMP9018 Advanced Graphics
+COMP9020 Foundations of Computer Science
+COMP9021 Principles of Programming
+COMP9024 Data Structures and Algorithms
+COMP9031 Internet Programming
+COMP9032 Microprocessors and Interfacing
+COMP9041 Software Construction: Techniques and Tools
+COMP9101 Design and Analysis of Algorithms
+COMP9102 Programming Languages and Compilers
+COMP9103 Algorithms and Computational Complexity
+COMP9104 Quantum Information and Computation
+COMP9116 Software System Development Using the B-Method and B-Toolkit
+COMP9117 Architecture of Software Systems
+COMP9151 Foundations of Concurrency
+COMP9152 Comparative Concurrency Semantics
+COMP9153 Algorithmic Verification
+COMP9161 Concepts of Programming Languages
+COMP9171 Object-Oriented Programming
+COMP9181 Language-based Software Safety
+COMP9201 Operating Systems
+COMP9211 Computer Architecture
+COMP9222 Digital Circuits and Systems
+COMP9242 Advanced Operating Systems
+COMP9243 Distributed Systems
+COMP9245 Real-Time Systems
+COMP9282 Extended Microprocessors and Interfacing
+COMP9283 Extended Operating Systems
+COMP9311 Database Systems
+COMP9314 Next Generation Database Systems
+COMP9315 Database Systems Implementation
+COMP9317 XML and Databases
+COMP9318 Data Warehousing and Data Mining
+COMP9321 Web Applications Engineering
+COMP9322 Service-Oriented Architectures
+COMP9323 e-Enterprise Project
+COMP9324 Wireless Programming for Mobile Enterprise Apps
+COMP9331 Computer Networks and Applications
+COMP9332 Network Routing and Switching
+COMP9333 Advanced Computer Networks
+COMP9334 Capacity Planning of Computer Systems and Networks
+COMP9335 Wireless Mesh and Sensor Networks
+COMP9336 Mobile Data Networking
+COMP9337 Securing Wireless Networks
+COMP9414 Artificial Intelligence
+COMP9415 Computer Graphics
+COMP9416 Knowledge Based Systems
+COMP9417 Machine Learning and Data Mining
+COMP9431 Robotic Software Architecture
+COMP9441 Cryptography and Distributed Systems Security
+COMP9444 Neural Networks
+COMP9447 Security Engineering Workshop
+COMP9448 Digital Forensics
+COMP9511 Human Computer Interaction
+COMP9514 Advanced Decision Theory
+COMP9517 Computer Vision
+COMP9519 Multimedia Systems
+COMP9596 Research Project - 12 units of credit
+COMP9790 Principles of Global Navigation Satellite System
+COMP9791 Modern Navigation & Positioning Technologies
+COMP9801 Extended Design & Analysis of Algorithms
+COMP9814 Extended Artificial Intelligence
+COMP9833 Extended Computer Networks and Applications
+COMP9844 Extended Neural Networks
+COMP9945 Research Project
+CONS0001 Project Finance
+CONS0002 Human Resources Management
+CONS0003 Project Quality Management
+CONS0004 Economics in Construction
+CONS0005 Computers in Construction Management
+CONS0006 Property Management
+CONS0007 Principles and Practice of Management
+CONS0009 Construction Planning and Control
+CONS0010 Contracts Management and Law
+CONS0011 Cost Planning and Analysis
+CONS0012 Quantitative Methods in Management
+CONS0013 Construction Management Applications
+CONS0014 Project Management
+CONS0015 Building Construction
+CONS0017 Project Management Leadership
+CRIM1010 Introduction to Criminology
+CRIM1011 Introduction to Criminal Justice
+CRIM2012 Crime Prevention Policy
+CRIM2013 Juvenile Justice
+CRIM2014 Policing
+CRIM2015 Sentencing: Law, Policy & Prac
+CRIM2018 Crime, Power & Human Rights: Transnational Organised Crime & State Crime
+CRIM2019 Drugs, Crime and Justice
+CRIM2020 Criminal Law and Justice 1
+CRIM2021 Criminal Law and Justice 2
+CRIM2022 Restorative Justice
+CRIM2023 Current Issues in Criminal Justice
+CRIM2024 Explaining Punishment
+CRIM2025 Indigenous Perspectives in Criminal Justice
+CRIM3000 Researching Crime and Justice
+CRIM3001 Criminological Theories
+CRIM3003 Security and Crime
+CRIM3010 Comparative Criminal Justice: From Investigation to Trial
+CRIM4000 Criminology Honours (Research) F/T
+CRIM4050 Criminology Honours (Research) Part Time
+CVEN0008 Full Time Research Thesis Civil and Environmental
+CVEN0088 Research Thesis Civil and Environmental Engineering Part-Time
+CVEN0610 Water and Soil Engineering
+CVEN0646 Water and Wastewater Engineering
+CVEN0656 Soil and Pavement Engineering
+CVEN1300 Engineering Mechanics
+CVEN1701 Environmental Principles and Systems
+CVEN2002 Engineering Computations for Civil Engineers
+CVEN2101 Engineering Construction
+CVEN2201 Soil Mechanics
+CVEN2301 Mechanics of Solids
+CVEN2302 Materials and Structures
+CVEN2501 Principles of Water Engineering
+CVEN2701 Water and Atmospheric Chemistry
+CVEN2702 Engineering Computations for Environmental Engineers
+CVEN3023 Civil Engineering Practice 3A
+CVEN3024 Civil Engineering Practice 3B
+CVEN3025 Engineering Computations 2
+CVEN3031 Civil Engineering Practice
+CVEN3101 Engineering Operations and Control
+CVEN3125 Engineering Construction 2
+CVEN3126 Engineering Management 1
+CVEN3201 Applied Geotechnics and Engineering Geology
+CVEN3222 Geotechnical Engineering 2
+CVEN3223 Geotechnical Engineering 3
+CVEN3301 Structural Analysis and Modelling
+CVEN3302 Structural Behaviour and Design
+CVEN3322 Structural Engineering 2
+CVEN3324 Structural Engineering 3
+CVEN3401 Sustainable Transport and Highway Engineering
+CVEN3402 Transport Engg & Environmental Sustainability
+CVEN3438 Transport Planning and Environment
+CVEN3448 Transport Engineering
+CVEN3501 Water Resources Engineering
+CVEN3502 Water and Wastewater Engineering
+CVEN3526 Water Resources Engineering
+CVEN3527 Water Engineering
+CVEN3531 Principles and Applications of Aquatic Chemistry
+CVEN3701 Environmental Frameworks, Law and Economics
+CVEN3702 Solid Wastes and Contaminant Transport
+CVEN3723 Environmental Engineering Practice 3A
+CVEN3724 Environmental Engineering Practice 3B
+CVEN3725 Waste Management
+CVEN3726 Environmental Policy, Law and Economics
+CVEN3731 Environmental Engineering Practice
+CVEN4002 Design Practice A
+CVEN4003 Design Practice B
+CVEN4027 Civil Engineering Practice 4A
+CVEN4028 Civil Engineering Practice 4B
+CVEN4029 Civil Engineering Practice 4C
+CVEN4030 Honours Thesis A
+CVEN4031 Honours Thesis B
+CVEN4101 Projects and People
+CVEN4102 Planning and Finance Practices
+CVEN4103 Project Performance
+CVEN4104 Project and System Skills
+CVEN4126 Engineering Management 2
+CVEN4201 Rock and Slope Engineering
+CVEN4202 Advanced Topics in Geotechnical Engineering
+CVEN4203 Geomechanics
+CVEN4204 Ground Improvement and Monitoring Techniques
+CVEN4205 Contaminated Site Engineering
+CVEN4225 Geotechnical Engineering 4
+CVEN4301 Advanced Concrete Structures
+CVEN4302 Prestressed Concrete Structures
+CVEN4303 Bridge Analysis and Design
+CVEN4304 Structural Analysis and Finite Elements
+CVEN4305 Advanced Materials Technology
+CVEN4307 Steel and Composite Structures
+CVEN4323 Structural Engineering 4
+CVEN4401 Urban Transport Planning
+CVEN4402 Transport Systems - Part 1: Network Analysis
+CVEN4403 Transport Systems - Part 2: Queuing Theory
+CVEN4404 Fundamentals of Traffic Engineering
+CVEN4501 Catchment Modelling and Water Resources Management
+CVEN4502 Coastal Engineering
+CVEN4503 Groundwater Resource Investigation
+CVEN4504 Advanced Water & Wastewater Treatment
+CVEN4505 River Engineering
+CVEN4526 Water and Wastewater Treatment
+CVEN4533 Transport and Fate of Pollutants
+CVEN4701 Planning Sustainable Infrastructure
+CVEN4702 Hazardous Waste Treatment
+CVEN4703 Advanced Water Quality Principles
+CVEN4727 Environmental Engineering Practice 4A
+CVEN4728 Environmental Engineering Practice 4B
+CVEN4729 Environmental Engineering Practice 4C
+CVEN4901 Special Project
+CVEN7800 Urban Hydrology and Stormwater
+CVEN7801 Design of Stormwater Structures
+CVEN7802 Coastal Dynamics
+CVEN7804 Coastal Structures
+CVEN7807 Groundwater Hydrology
+CVEN7808 Investigation of Groundwater Resources
+CVEN7813 Estuarine Processes
+CVEN7816 Catchment Surface Models
+CVEN7818 Channel and River Models
+CVEN7819 Hydrological Processes
+CVEN7820 Rainfall and Runoff Processes
+CVEN7821 Water Resources Modelling 1
+CVEN7825 Aquatic Chemistry for Engineering
+CVEN7826 Microbiology for Engineering
+CVEN7827 Contaminant Transport in the Environment
+CVEN7828 Transformation and Fate of Contaminants in the Environment
+CVEN9405 Urban Transport Planning Practice
+CVEN9414 Transport Systems Part 1
+CVEN9415 Transport Systems Part 2
+CVEN9422 Traffic Management and Control
+CVEN9500 Engineering Geology and Geotechnical Models
+CVEN9503 Advanced Foundation Engineering
+CVEN9508 Rock Slope Instability and Stabilization
+CVEN9511 Geotechnical Models and Site Investigation
+CVEN9512 Geomechanics
+CVEN9513 Advanced Foundation Engineering
+CVEN9514 Numerical Methods in Geotechnical Engineering
+CVEN9521 Slope Instability and Stabilisation
+CVEN9522 Rock Engineering
+CVEN9523 Pavement Engineering and Analysis
+CVEN9524 Geotechnical Engineering of Dams
+CVEN9525 Fundamentals of Geomechanics
+CVEN9610 Surface Water Hydrology
+CVEN9611 Urban Hydrology and Stormwater Management
+CVEN9612 Catchment and Water Resources Modelling
+CVEN9620 Channels, Rivers and Estuaries
+CVEN9630 Groundwater Hydrology and Resources Analysis
+CVEN9631 Hydrogeochemistry
+CVEN9640 Waves, Beaches and Coastal Infrastructure
+CVEN9701 Engineering Economics and Financial Management
+CVEN9702 Project Planning and Control
+CVEN9703 Quality and Quality Systems
+CVEN9706 Human Resources Management
+CVEN9707 Contracts Management
+CVEN9710 Management of Risk
+CVEN9712 Dispute Avoidance and Resolution
+CVEN9714 Resource Management
+CVEN9717 Marketing in Technology and Engineering
+CVEN9720 Problem Solving and Decision Making
+CVEN9723 Design of Construction Operations
+CVEN9726 Legal Studies and Professional Practice
+CVEN9727 Construction Estimating and Tendering
+CVEN9730 International Project Management
+CVEN9731 Project Management Framework
+CVEN9773 Introduction to Rock Engineering
+CVEN9785 Pavement Evaluation and Management
+CVEN9786 Industrial, Airport and Heavy Duty Pavements
+CVEN9793 Geomechanics
+CVEN9798 Fundamentals of Geomechanics
+CVEN9802 Structural Stability
+CVEN9806 Prestressed Concrete Design
+CVEN9809 Reinforced Concrete Design
+CVEN9820 Computational Structural Mechanics
+CVEN9822 Steel and Composite Structures
+CVEN9824 Advanced Materials Technology
+CVEN9855 Water and Wastewater Analysis and Quality Requirements
+CVEN9856 Water Treatment
+CVEN9857 Wastewater Treatment
+CVEN9872 Solid Waste Management
+CVEN9881 Hazardous Waste Management
+CVEN9884 Environmental Engineering Science 1
+CVEN9885 Environmental Engineering Science 2
+CVEN9888 Environmental Management
+CVEN9892 Sustainibility Assessment & Risk Analysis
+CVEN9895 Fundamental Knowledge in Environmental Management: Engineering
+CVEN9901 Special Topic in Civil and Environmental Engineering
+CVEN9902 Special Topic in Civil and Environmental Engineering
+CVEN9930 Masters Project
+CVEN9975 Special Topic (3 units of credit)

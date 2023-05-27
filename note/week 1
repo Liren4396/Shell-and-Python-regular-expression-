@@ -1,0 +1,26 @@
+ wc命令计算被提交到标准输入或是一个文件的行数,单词数,和字符数.
+ wc - l numbers of lines
+ head 显示前十行
+^
+
+ cat -A 显示所有
+
+man 1 grep help menu
+ grep -E regular expression
+ -i ignore upper or lower case
+ -c totally how many line
+ -v 显示不包含匹配文本的所有行。
+-F 或 --fixed-regexp : 将样式视为固定字符串的列表。
+-G 或 --basic-regexp : 将样式视为普通的表示法来使用。
+-P a Perl regular expression
+
+
+cut -d'|' -f1 enrollments | sort | uniq
+cut -d define 自定义分隔符
+截断到第一个f1 '|' sort | uniq 删除相同的,并且排序
+uniq -c 在每列旁边显示该行重复出现的次数。
+sort -nr n数值的大小排序, r相反的顺序
+Linux join命令用于将两个文件中，指定栏位内容相同的行连接起来。
+
+
+ ls -l 文件名、文件类型、权限、硬链接数、所有者名、组名、大小(byte)
